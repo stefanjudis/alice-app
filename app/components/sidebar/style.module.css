@@ -1,0 +1,47 @@
+.container {
+  position : fixed;
+
+  left   : 0;
+  top    : 0;
+  bottom : 0;
+
+  width : 3em;
+
+  padding : .5em;
+
+  background : #444;
+
+  box-shadow : inset -.125em 0 .125em #333;
+}
+
+.views {
+  margin  : 0;
+  padding : 0;
+}
+
+.viewItemBtn {
+  display : block;
+
+  width  : 3em;
+  height : 3em;
+
+  font-size : 1em;
+
+  border-radius : 50%;
+
+  background : none;
+
+  border : .125em solid #ddd;
+
+  line-height : 2.5em;
+  text-align : center;
+}
+
+.viewItemBtn.is-active {
+  border-color : red;
+}
+
+
+.viewItem + .viewItem {
+  margin-top : 1em;
+}
