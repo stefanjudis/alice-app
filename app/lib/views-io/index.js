@@ -4,7 +4,7 @@ let fs  = require( 'fs' );
 let app = require( 'electron' ).remote.app;
 
 const FILE_NAME = 'view.json';
-let dataPath    = app.getPath( 'appData' ) + '/' + FILE_NAME;
+let dataPath    = app.getPath( 'userData' ) + '/' + FILE_NAME;
 
 function get() {
   try {
