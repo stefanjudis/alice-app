@@ -5,13 +5,15 @@ import IpcMapper from '../components/ipc-mapper/index';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as ViewsActions from '../actions/views';
+import * as ConfigActions from '../actions/config';
 
 class App extends Component {
   static propTypes = {
     children       : PropTypes.element.isRequired,
     addView        : PropTypes.func.isRequired,
     setCurrentView : PropTypes.func.isRequired,
-    views          : PropTypes.object.isRequired
+    views          : PropTypes.object.isRequired,
+    config         : PropTypes.object.isRequired
   };
 
   constructor( props ) {
@@ -51,15 +53,23 @@ class App extends Component {
   }
 
   render() {
-    const { addView, views } = this.props;
+    const { addView, views, config } = this.props;
 
     return (
       <div>
-        <Sidebar
-          views={ views }
-          addView={ this.openDialog.bind( this ) }
-          setCurrentView={ this.setCurrentView.bind( this ) }>
-        </Sidebar>
+        {
+          ! config.hasSidebar ?
+            (
+              <Sidebar
+              views={ views }
+              isSidebarToggled={ config.get( 'isSidebarToggled' ) }
+              addView={ this.openDialog.bind( this ) }
+              toggleSidebar={ this.props.toggleSidebar }
+              setCurrentView={ this.setCurrentView.bind( this ) }>
+              </Sidebar>
+            ) : null
+        }
+
 
         <AddViewModal
           isOpen={ this.state.addViewDialogOpen }
@@ -86,12 +96,13 @@ class App extends Component {
 
 function mapStateToProps( state ) {
   return {
-    views       : state.views
+    views  : state.views,
+    config : state.config
   };
 }
 
 function mapDispatchToProps( dispatch ) {
-  return bindActionCreators( ViewsActions, dispatch );
+  return bindActionCreators( { ...ViewsActions, ...ConfigActions }, dispatch );
 }
 
 export default connect( mapStateToProps, mapDispatchToProps )( App );

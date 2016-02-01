@@ -1,4 +1,4 @@
-import React,{ Component } from 'react';
+import React,{ Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import { Link } from 'react-router';
 import styles from './style.module.css';
@@ -46,8 +46,10 @@ export default class Home extends Component {
     );
   }
   render() {
+    const { config } = this.props;
+
     return (
-      <main>
+      <main className={ config.get( 'isSidebarToggled' ) ? 'is-sidebarToggled' : '' }>
         <ul className={ styles.views }>
           { this.props.views.map( this.renderView, this ) }
         </ul>

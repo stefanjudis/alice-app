@@ -20,16 +20,17 @@ export default class Sidebar extends Component {
   }
 
   render() {
-    const { addView, views } = this.props;
+    const { addView, views, isSidebarToggled } = this.props;
 
     return (
-      <aside className={ styles.container }>
+      <aside className={ styles.container  + ' ' + ( isSidebarToggled ? styles[ 'is-toggled' ] : '' )  }>
         <h1>Alice</h1>
         <ul className={ styles.views }>
           { views.map( this.renderViewItem, this ) }
         </ul>
 
         <button onClick={ this.addView.bind( this ) }>Add view</button>
+        <button onClick={ this.props.toggleSidebar }>Toggle Menu</button>
       </aside>
     );
   }

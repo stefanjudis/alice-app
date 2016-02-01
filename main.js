@@ -141,6 +141,13 @@ app.on('ready', () => {
         }
       },
       {
+        label: 'Toggle Side Bar',
+        accelerator: 'Ctrl+Command+S',
+        click: () => {
+          mainWindow.webContents.send( 'app-sidebar-toggle' );
+        }
+      },
+      {
         label: 'Toggle Developer Tools',
         accelerator: 'Alt+Command+I',
         click() {
@@ -169,6 +176,13 @@ app.on('ready', () => {
         accelerator: 'Ctrl+Command+F',
         click() {
           mainWindow.setFullScreen(!mainWindow.isFullScreen());
+        }
+      },
+      {
+        label: 'Toggle Side Bar',
+        accelerator: 'Ctrl+Command+S',
+        click: () => {
+          mainWindow.webContents.send( 'app-sidebar-toggle' );
         }
       },
       {

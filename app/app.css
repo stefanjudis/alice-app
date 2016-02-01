@@ -44,4 +44,10 @@ main {
   top    : 0;
   right  : 0;
   bottom : 0;
+
+  transition : left .5s;
+}
+
+main.is-sidebarToggled {
+  left : 0;
 }

@@ -12,6 +12,12 @@
   background : #444;
 
   box-shadow : inset -.125em 0 .125em #333;
+
+  transition : all .5s;
+}
+
+.container.is-toggled {
+  transform : translate( -100%, 0 );
 }
 
 .views {
