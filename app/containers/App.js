@@ -34,6 +34,7 @@ class App extends Component {
     } );
 
     this.props.addView( appView );
+    this.props.setCurrentView( appView );
   }
 
   setCurrentView( appView ) {
